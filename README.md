@@ -35,6 +35,7 @@ You will be evaluated with the following in mind:
 - Does the solution make good use of tools/frameworks/libraries/APIs?
 - Does the implementation follow established best practices (design patterns, language usage, code formatting, etc..)?
 - Does the implementation use a sound design? What is the efficiency of the design? What happens at scale?
+- Does the solution go above/beyond from a visual/UI perspective? Is it nice to look at or does it make the eyes bleed?
 
 Happy coding!
 
