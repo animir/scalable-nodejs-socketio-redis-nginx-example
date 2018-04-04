@@ -9,6 +9,11 @@ Shows a list of IP addresses viewing the page
 Run `docker-compose build` if you want to rebuild containers
 4. Site available on `0.0.0.0:8080` on Unix-like systems (check `ifconfig` to find correct IP if not)
 
+## TODOs
+1. Set better frontend architecture and use Webpack
+2. Implement `sticky-cluster` or `sticky-session` with PM2 to utilize all CPU cores
+3. If it should be scalable across several machines, use `socket.io-redis`
+
 ## Requirements
 
 Create a single-page web app that:
