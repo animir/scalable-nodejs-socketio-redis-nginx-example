@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    "node",
+    "security"
+  ],
+  "extends": [
+    "plugin:node/recommended",
+    "plugin:security/recommended",
+    "eslint:recommended",
+    "airbnb-base"
+  ]
+}
