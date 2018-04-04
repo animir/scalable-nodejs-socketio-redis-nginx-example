@@ -1,0 +1,15 @@
+{
+  "name": "currently-viewing-app",
+  "version": "1.0.0",
+  "description": "Show IPs of all clients with opened site",
+  "main": "index.js",
+  "repository": "https://github.com/animir/currently-viewing-app",
+  "author": "animir@ya.ru",
+  "license": "MIT",
+  "dependencies": {
+    "socket.io": "^2.1.0"
+  },
+  "engines": {
+    "node": ">=9.0.0"
+  }
+}
