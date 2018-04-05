@@ -7,7 +7,7 @@ and nginx server as a balancer and web server for static client files (`index.ht
 ## Installation
 1. `git clone` this repo
 2. Make sure you use latest `docker` and `docker-compose`
-3. Run `docker-compose up`. It builds `web` and `socket-server` containers for you. 
+3. Run `docker-compose up`. It builds `web`, `redis` and `socket-server` containers for you. 
 Run `docker-compose build` if you want to rebuild containers
 4. Site available on `0.0.0.0:80` on Unix-like systems (check `ifconfig` to find correct IP if not)
 
