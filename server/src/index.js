@@ -9,9 +9,10 @@ const ips = {};
 app.listen(process.env.NODE_PORT || 3000, '0.0.0.0');
 
 io.on('connection', (socket) => {
-  // socket.clientIp = socket.request.connection.remoteAddress;
   // fake ip changed every 10 seconds, which simplify testing in one browser
   socket.clientIp = Math.round((new Date()).getTime() / 10000);
+
+  // socket.clientIp = socket.handshake.headers['x-real-ip'];
 
   // Send to all except current
   if (typeof ips[socket.clientIp] === 'undefined') {

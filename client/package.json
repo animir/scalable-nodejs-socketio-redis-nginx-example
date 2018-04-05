@@ -1,23 +1,23 @@
 {
-  "name": "currently-viewing-app-server",
+  "name": "currently-viewing-app-client",
   "version": "1.0.0",
-  "description": "Scalable websocket server for displaying connected IPs",
+  "description": "Show IPs of all clients with opened site",
   "main": "src/index.js",
   "repository": "https://github.com/animir/currently-viewing-app",
   "author": "animir@ya.ru",
   "license": "MIT",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack"
+  },
   "dependencies": {
-    "socket.io": "^2.1.0",
-    "socket.io-redis": "^5.2.0"
+    "socket.io-client": "^2.1.0"
   },
   "devDependencies": {
+    "babel-loader": "^7.1.4",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-security": "^1.4.0"
-  },
-  "engines": {
-    "node": ">=9.0.0"
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
   }
 }

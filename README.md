@@ -1,6 +1,8 @@
 # Currently Viewing App
 
 Shows a list of IP addresses viewing the page
+Application launched with docker: node server with redis server as a message broker for scaling 
+and nginx server as a balancer and web server for static client files (`index.html` and `index.js`)
 
 ## Installation
 1. `git clone` this repo
@@ -9,10 +11,17 @@ Shows a list of IP addresses viewing the page
 Run `docker-compose build` if you want to rebuild containers
 4. Site available on `0.0.0.0:80` on Unix-like systems (check `ifconfig` to find correct IP if not)
 
+## Development
+Client uses Webpack to create bundle index.js. 
+If something changed in `client/src` directory, `yarn build` should be launched to update index.js bundle
+
+## Test
+*!!!NOTE!!!* In purpose of testing on one machine, websocket server doesn't use real IPs, but number which changed every 10 seconds
+Uncomment server/src/index.js:15 if you wish to see real IP addresses
+
 ## TODOs
-1. Set better frontend architecture and use Webpack
-2. Implement `sticky-cluster` or `sticky-session` with PM2 to utilize all CPU cores
-3. If it should be scalable across several machines, use `socket.io-redis`
+1. add deploy script to launch `yarn build` before docker containers start. 
+Ignore client index.js bundle from get repo
 
 ## Requirements
 
