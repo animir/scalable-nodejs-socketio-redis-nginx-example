@@ -16,12 +16,15 @@ Client uses Webpack to create bundle index.js.
 If something changed in `client/src` directory, `yarn build` should be launched to update index.js bundle
 
 ## Test
-*!!!NOTE!!!* In purpose of testing on one machine, websocket server doesn't use real IPs, but number which changed every 10 seconds
-When user opens a tab in browser, number N assigned to this tab via socket connection. 
+*!!!NOTE!!!* In purpose of testing on one machine, websocket server doesn't use real IPs, but number which changed every 10 seconds.
+
+When user opens a tab in browser, number N assigned to this tab via socket connection.
+
 When user opens the second tab in browser, application assigns the same number N or the new number M.
+
 IF the second tab assigned with number N and user closes the first tab, it's "IP-number" still in the list, 
 because there is at least one tab. 
-It allows to see how would it work if user opens many tabs from the same and different browsers.
+It allows to see how would it work if user opens many tabs from the same and different computers.
 
 Uncomment server/src/index.js:15 if you wish to see real IP addresses (requires to restart docker container)
 
