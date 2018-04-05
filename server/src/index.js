@@ -1,9 +1,12 @@
 const app = require('http').createServer();
+const redis = require('socket.io-redis');
 const io = require('socket.io')(app);
+
+io.adapter(redis({ host: 'redis', port: 6379 }));
 
 const ips = {};
 
-app.listen(process.env.SOCKET_SERVER_PORT || 3000, '0.0.0.0');
+app.listen(process.env.NODE_PORT || 3000, '0.0.0.0');
 
 io.on('connection', (socket) => {
   // socket.clientIp = socket.request.connection.remoteAddress;

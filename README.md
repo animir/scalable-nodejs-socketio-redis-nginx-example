@@ -7,7 +7,7 @@ Shows a list of IP addresses viewing the page
 2. Make sure you use latest `docker` and `docker-compose`
 3. Run `docker-compose up`. It builds `web` and `socket-server` containers for you. 
 Run `docker-compose build` if you want to rebuild containers
-4. Site available on `0.0.0.0:8080` on Unix-like systems (check `ifconfig` to find correct IP if not)
+4. Site available on `0.0.0.0:80` on Unix-like systems (check `ifconfig` to find correct IP if not)
 
 ## TODOs
 1. Set better frontend architecture and use Webpack

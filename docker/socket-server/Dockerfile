@@ -1,8 +1,7 @@
 FROM node:latest
 
 WORKDIR /app
-RUN yarn install
+RUN yarn install --prod
+RUN yarn global add pm2
 
-EXPOSE 3000
-
-CMD node server/index.js
+CMD pm2-runtime process.yml

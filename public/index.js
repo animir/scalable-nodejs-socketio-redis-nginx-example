@@ -13,7 +13,7 @@ const clearIpList = () => {
   document.getElementById('ip-list').innerHTML = '';
 };
 
-const socket = io(`${window.location.hostname}:3000`, {
+const socket = io(`${window.location.hostname}`, {
   transports: ['websocket'],
 });
 

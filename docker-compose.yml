@@ -3,7 +3,7 @@ services:
   web:
     image: nginx:latest
     ports:
-      - "8080:80"
+      - "80:80"
     network_mode: bridge
     links:
       - socket-server
@@ -12,8 +12,16 @@ services:
       - ./docker/web/site.conf:/etc/nginx/conf.d/default.conf
   socket-server:
     build: docker/socket-server/
-    ports:
-      - "3000:3000"
     network_mode: bridge
+    links:
+      - redis
+    expose:
+      - "3000"
+      - "3001"
     volumes:
-      - ./:/app
+      - ./server:/app
+  redis:
+    image: redis:alpine
+    network_mode: bridge
+    expose:
+      - "6379"
