@@ -7,6 +7,7 @@
   "author": "animir@ya.ru",
   "license": "MIT",
   "dependencies": {
+    "redis": "^2.8.0",
     "socket.io": "^2.1.0",
     "socket.io-redis": "^5.2.0"
   },

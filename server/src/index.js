@@ -1,12 +1,12 @@
+const config = require('./config/config');
 const app = require('http').createServer();
-const redis = require('socket.io-redis');
+const socketioRedis = require('socket.io-redis');
 const io = require('socket.io')(app);
+const ipList = require('./component/ipList');
 
-io.adapter(redis({ host: 'redis', port: 6379 }));
+io.adapter(socketioRedis({ host: config.redis.host, port: config.redis.port }));
 
-const ips = {};
-
-app.listen(process.env.NODE_PORT || 3000, '0.0.0.0');
+app.listen(config.node.port, '0.0.0.0');
 
 io.on('connection', (socket) => {
   // fake ip changed every 10 seconds, which simplify testing in one browser
@@ -15,25 +15,23 @@ io.on('connection', (socket) => {
   // socket.clientIp = socket.handshake.headers['x-real-ip'];
 
   // Send to all except current
-  if (typeof ips[socket.clientIp] === 'undefined') {
-    socket.broadcast.emit('add-ip', socket.clientIp);
-  }
+  ipList.exists(socket.clientIp, (err, exists) => {
+    if (!exists) {
+      socket.broadcast.emit('add-ip', socket.clientIp);
+    }
+  });
 
-  ips[socket.clientIp] = socket.clientIp;
+  ipList.add(socket.clientIp);
   // Send full list to current
-  socket.emit('connected', ips);
+  ipList.getAll((err, ips) => {
+    socket.emit('connected', ips);
+  });
 
   socket.on('disconnect', () => {
-    let emitRemoveIp = true;
-    Object.keys(io.sockets.sockets).forEach((socketKey) => {
-      if (io.sockets.sockets[socketKey].clientIp === socket.clientIp && io.sockets.sockets[socketKey].id !== socket.id) {
-        emitRemoveIp = false;
+    ipList.remove(socket.clientIp, (err, stillExists) => {
+      if (!stillExists) {
+        io.sockets.emit('remove-ip', socket.clientIp);
       }
     });
-
-    if (emitRemoveIp) {
-      io.sockets.emit('remove-ip', socket.clientIp);
-      delete ips[socket.clientIp];
-    }
   });
 });
