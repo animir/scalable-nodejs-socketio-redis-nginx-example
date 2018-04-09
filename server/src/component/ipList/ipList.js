@@ -4,27 +4,63 @@ const ipListKey = 'iplist';
 
 module.exports = {
   add: (ip) => {
-    redisClient.hincrby(ipListKey, ip, 1);
-  },
-  remove: (ip, cb) => {
-    redisClient.hget(ipListKey, ip, (err, count) => {
-      if (count <= 1) {
-        redisClient.hdel(ipListKey, ip);
-        cb(err, false);
-      } else {
-        redisClient.hincrby(ipListKey, ip, -1);
-        cb(err, true);
-      }
+    return new Promise((resolve, reject) => {
+      redisClient.hincrby(ipListKey, ip, 1, (err) => {
+        if (err) {
+          reject(new Error(err.message));
+        } else {
+          resolve();
+        }
+      });
     });
   },
-  exists: (ip, cb) => {
-    redisClient.hexists(ipListKey, ip, (err, res) => {
-      cb(err, res === 1);
+  remove: (ip) => {
+    return new Promise((resolve, reject) => {
+      redisClient.hget(ipListKey, ip, (err, count) => {
+        if (err) {
+          reject(new Error(err.message));
+        }
+
+        if (count <= 1) {
+          redisClient.hdel(ipListKey, ip, (errDel) => {
+            if (errDel) {
+              reject(new Error(err.message));
+            }
+
+            resolve(false);
+          });
+        } else {
+          redisClient.hincrby(ipListKey, ip, -1, (errDel) => {
+            if (errDel) {
+              reject(new Error(err.message));
+            }
+
+            resolve(true);
+          });
+        }
+      });
     });
   },
-  getAll: (cb) => {
-    redisClient.hgetall(ipListKey, (err, ips) => {
-      cb(err, ips);
+  exists: (ip) => {
+    return new Promise((resolve, reject) => {
+      redisClient.hexists(ipListKey, ip, (err, res) => {
+        if (err) {
+          reject(new Error(err.message));
+        }
+
+        resolve(res === 1);
+      });
+    });
+  },
+  getAll: () => {
+    return new Promise((resolve, reject) => {
+      redisClient.hgetall(ipListKey, (err, ips) => {
+        if (err) {
+          reject(new Error(err.message));
+        }
+
+        resolve(ips);
+      });
     });
   },
 };
