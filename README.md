@@ -1,4 +1,4 @@
-# Currently Viewing App
+# Scalable socketio server
 
 Shows a list of IP addresses viewing the page
 Application launched with docker: node server with redis server as a message broker for scaling 
