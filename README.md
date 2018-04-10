@@ -15,7 +15,10 @@ Run `docker-compose build` if you want to rebuild containers
 Client uses Webpack to create bundle index.js. 
 If something changed in `client/src` directory, `yarn build` should be launched to update index.js bundle
 
-## Test
+## Automated Test
+1. Unit tests launch `yarn test`
+
+## Manual Test
 *!!!NOTE!!!* In purpose of testing on one machine, websocket server doesn't use real IPs, but number which changed every 10 seconds.
 
 When user opens a tab in browser, number N assigned to this tab via socket connection.
