@@ -1,9 +1,9 @@
 {
-  "name": "currently-viewing-app-server",
+  "name": "scalable-nodejs-socketio-redis-nginx-example-server",
   "version": "1.0.0",
-  "description": "Scalable websocket server for displaying connected IPs",
+  "description": "Scalable nodejs websocket server for displaying connected IPs in browser",
   "main": "src/index.js",
-  "repository": "https://github.com/animir/currently-viewing-app",
+  "repository": "https://github.com/animir/scalable-nodejs-socketio-redis-nginx-example",
   "author": "animir@ya.ru",
   "license": "MIT",
   "dependencies": {

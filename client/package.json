@@ -1,9 +1,9 @@
 {
-  "name": "currently-viewing-app-client",
+  "name": "scalable-nodejs-socketio-redis-nginx-example-client",
   "version": "1.0.0",
   "description": "Show IPs of all clients with opened site",
   "main": "src/index.js",
-  "repository": "https://github.com/animir/currently-viewing-app",
+  "repository": "https://github.com/animir/scalable-nodejs-socketio-redis-nginx-example",
   "author": "animir@ya.ru",
   "license": "MIT",
   "scripts": {
