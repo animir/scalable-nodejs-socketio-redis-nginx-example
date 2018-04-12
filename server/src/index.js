@@ -1,7 +1,7 @@
-const server = require('./server');
+const io = require('./server').socketio;
 const ipList = require('./component/ipList');
 
-server.on('connection', (socket) => {
+io.on('connection', (socket) => {
   // fake ip changed every 10 seconds, which simplify testing in one browser
   socket.clientIp = Math.round((new Date()).getTime() / 10000);
 
@@ -25,7 +25,7 @@ server.on('connection', (socket) => {
   socket.on('disconnect', () => {
     ipList.remove(socket.clientIp).then((stillExists) => {
       if (!stillExists) {
-        server.sockets.emit('remove-ip', socket.clientIp);
+        io.sockets.emit('remove-ip', socket.clientIp);
       }
     }).catch((err) => { throw err; });
   });

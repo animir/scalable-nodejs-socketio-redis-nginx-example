@@ -16,7 +16,8 @@ Client uses Webpack to create bundle index.js.
 If something changed in `client/src` directory, `yarn build` should be launched to update index.js bundle
 
 ## Automated Test
-1. Unit tests launch `yarn test`
+1. Unit tests launch `yarn test-unit`
+2. Functional tests must be launched in docker env like `docker exec currentlyviewingapp_socket-server_1 yarn test-func`
 
 ## Manual Test
 *!!!NOTE!!!* In purpose of testing on one machine, websocket server doesn't use real IPs, but number which changed every 10 seconds.
