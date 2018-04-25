@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import IpList from './component/IpList';
 
-const list = new IpList('ip-list');
+const list = new IpList(document, 'ip-list');
 
 const socket = io(`${window.location.hostname}`, {
   transports: ['websocket'],

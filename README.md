@@ -7,12 +7,13 @@ and nginx server as a balancer and web server for static client files (`index.ht
 ## Installation
 1. `git clone` this repo
 2. Make sure you use latest `docker` and `docker-compose`
-3. Run `docker-compose up`. It builds `web`, `redis` and `socket-server` containers for you. 
+3. Run `yarn build` from `client` directory to create `dist/index.js` bundle
+4. Run `docker-compose up`. It builds `web`, `redis` and `socket-server` containers for you. 
 Run `docker-compose build` if you want to rebuild containers
-4. Site available on `0.0.0.0:80` on Unix-like systems (check `ifconfig` to find correct IP if not)
+5. Site available on `0.0.0.0:80` on Unix-like systems (check `ifconfig` to find correct IP if not)
 
 ## Development
-Client uses Webpack to create bundle index.js. 
+Client uses Webpack to create bundle `dist/index.js`. 
 If something changed in `client/src` directory, `yarn build` should be launched to update index.js bundle
 
 ## Automated Test
