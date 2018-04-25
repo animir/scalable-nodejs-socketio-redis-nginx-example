@@ -27,6 +27,8 @@ build/Release
 server/node_modules
 client/node_modules
 
+client/public/dist
+
 # Optional npm cache directory
 .npm
 
